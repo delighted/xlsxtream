@@ -11,8 +11,9 @@ module Xlsxtream
 
     WS_AROUND_TAGS = /(?<=>)\s+|\s+(?=<)/.freeze
 
-    UNSAFE_ATTR_CHARS = /[&"<>]/.freeze
-    UNSAFE_VALUE_CHARS = /[&<>]/.freeze
+    ILLEGAL_CONTROL_CHARACTERS = "\x00-\x08\x11-\x12\x0e-\x1f"
+    UNSAFE_ATTR_CHARS = /[&"<>#{ILLEGAL_CONTROL_CHARACTERS}]/.freeze
+    UNSAFE_VALUE_CHARS = /[&<>#{ILLEGAL_CONTROL_CHARACTERS}]/.freeze
 
     class << self
 
