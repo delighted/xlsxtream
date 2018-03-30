@@ -16,7 +16,7 @@ module Xlsxtream
         cid = "#{column}#@rownum"
         column.next!
         xml << case value
-        when Fixnum, Float
+        when Integer, Float
           %'<c r="#{cid}" t="n"><v>#{value}</v></c>'
         when Date, Time, DateTime
           style = value.is_a?(Date) ? 1 : 2
